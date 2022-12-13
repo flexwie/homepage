@@ -6,8 +6,8 @@ export const SITE = {
   desc: "A tech blog",
   title: "felixwie",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true,
-  postPerPage: 3,
+  lightAndDarkMode: false,
+  postPerPage: 5,
 };
 
 export const LOGO_IMAGE = {
