@@ -3,34 +3,14 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+I'm Felix, a developer from south Germany. I'm self taught (although I have a degree in Media Computer Sience) and currently working for a company in Munich that develops solutions for Microsofts Business Central, but also offers products in Azure and the PowerPlatform.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+## Projects
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+Aside from what I do at work (DevOps Engineer is my fancy buzzword-title) I am interested in Go and microservice architecture. I like to identify problems in my life and try to make the solution to them into a "product".
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+**[BC100](https://github.com/flexwie/bc100)**  
+I have the great benefit that my company offers me a _BahnCard100_ (unlimited high speed rail in Germany) as part of my compensation. Only downside is that I have to keep a record of my job-related journey. For this I created a simple web app with Remix.
 
-## Tech Stack
-
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
-
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+**[Monitoring Telegram Bot](https://github.com/flexwie/monitoring_bot)**  
+Many parts of my personal and professional life require to receive and react to notifications. In trying to solidify the different ways they reach me (push, mail, messages, ...) I wrote a bot to contact me in the place that I also use for daily communication: Telegram. Currently it fetches TooGoodToGo offers and Azure alert notifications are planned as well.
