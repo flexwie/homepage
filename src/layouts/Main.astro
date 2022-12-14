@@ -9,7 +9,6 @@ export interface Props {
 const { pageTitle, pageDesc } = Astro.props;
 ---
 
-<Breadcrumbs />
 <main id="main-content">
   <h1>{pageTitle}</h1>
   <p>{pageDesc}</p>
@@ -18,12 +17,12 @@ const { pageTitle, pageDesc } = Astro.props;
 
 <style>
   #main-content {
-    @apply max-w-3xl mx-auto px-4 pb-12 w-full;
+    @apply max-w-3xl mx-auto px-4 pb-12 w-full mt-8;
   }
   #main-content h1 {
     @apply font-semibold text-2xl sm:text-3xl;
   }
   #main-content p {
-    @apply mt-2 mb-6 italic;
+    @apply mt-2 mb-6;
   }
 </style>
