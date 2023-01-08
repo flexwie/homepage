@@ -6,6 +6,8 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "src/types";
+import Card from "@components/Card";
+import Disclaimer from "@components/Disclaimer";
 
 export interface Props {
   post: MarkdownInstance<Frontmatter>;
@@ -13,7 +15,7 @@ export interface Props {
 
 const { frontmatter, Content } = Astro.props.post;
 
-const { title, author, description, ogImage, datetime, tags } = frontmatter;
+const { title, author, description, ogImage, datetime, tags, disclaimer } = frontmatter;
 ---
 
 <Layout
@@ -24,20 +26,13 @@ const { title, author, description, ogImage, datetime, tags } = frontmatter;
 >
   <Header />
   <div class="max-w-3xl mx-auto w-full px-2 flex justify-start mt-8">
-    <!-- <button
-      class="mt-8 mb-2 hover:opacity-75 flex focus-outline"
-      onclick="history.back()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg><span>Go back</span>
-    </button> -->
   </div>
   <main id="main-content">
     <h1 class="post-title">{title}</h1>
     <Datetime datetime={datetime} size="lg" className="my-2" />
+
+    {disclaimer && <Disclaimer />}
+
     <article id="article" role="article" class="mx-auto max-w-3xl mt-8 prose">
       <Content />
     </article>

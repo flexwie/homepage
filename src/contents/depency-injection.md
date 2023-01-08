@@ -10,6 +10,7 @@ tags:
   - typescript
 ogImage: ""
 description: Taking a look at dependency injection and the decorator pattern in Typescript.
+disclaimer: true
 ---
 
 On my journey through the depths of Typescript and its frameworks I sometimes stumbled upon a technique that is common in more traditional languages like Java and C# (and has even found its way into Go with the superb Fx library), but not often used in JavaScript: Metadata Reflection.
