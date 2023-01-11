@@ -1,18 +1,20 @@
 ---
 author: Felix Wieland
-datetime: 2022-12-13T20:18:00Z
-title: Dependency injection in Typescript
-slug: dependency-injection-typescript
+datetime: 2022-12-01T20:18:00Z
+title: Getting started with AKS and Terraform
+slug: getting-started-aks-terraform
 featured: true
 draft: true
 tags:
-  - development
-  - typescript
+  - test
 ogImage: ""
-description: Taking a look at dependency injection and the decorator pattern in Typescript.
+description: test
+series: kubernetes-with-aks
 ---
 
-aks series
+hi
+
+# aks series
 
 1: setting up in terraform
 

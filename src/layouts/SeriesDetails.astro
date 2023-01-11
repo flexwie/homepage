@@ -2,12 +2,12 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "src/types";
 import Card from "@components/Card";
 import Disclaimer from "@components/Disclaimer";
+import slugify from "@utils/slugify";
 
 export interface Props {
   post: MarkdownInstance<Frontmatter>;
@@ -17,6 +17,13 @@ const { frontmatter, Content } = Astro.props.post;
 
 const { title, author, description, ogImage, datetime, tags, disclaimer } =
   frontmatter;
+
+const posts = await Astro.glob<Frontmatter>("../contents/**/*[!series].md");
+const seriesPosts = posts.filter(
+  ({ frontmatter: fm }) => fm.series == frontmatter.series
+);
+
+console.log(seriesPosts);
 ---
 
 <Layout
@@ -31,23 +38,27 @@ const { title, author, description, ogImage, datetime, tags, disclaimer } =
     <h1 class="post-title">{title}</h1>
     <Datetime datetime={datetime} size="lg" className="my-2" />
 
+    {disclaimer && <Disclaimer />}
+
     <article id="article" role="article" class="mx-auto max-w-3xl mt-8 prose">
       <Content />
     </article>
 
-    <div class="flex flex-row items-center justify-between">
-      <ul class="tags-container">
-        {tags && tags.map(tag => <Tag name={tag} />)}
+    <div>
+      <ul>
+        {
+          seriesPosts.map(
+            ({ frontmatter }, index) =>
+              index < 4 && (
+                <Card
+                  href={`/posts/${slugify(frontmatter)}`}
+                  post={frontmatter}
+                  secHeading={false}
+                />
+              )
+          )
+        }
       </ul>
-      <div>
-        <script
-          type="text/javascript"
-          src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
-        ></script><script type="text/javascript">
-          kofiwidget2.init("Buy me a coffee", "#29abe0", "K3K4HRHR0");
-          kofiwidget2.draw();
-        </script>
-      </div>
     </div>
   </main>
 

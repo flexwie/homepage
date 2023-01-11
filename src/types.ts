@@ -9,6 +9,7 @@ export interface Frontmatter {
   draft: boolean;
   tags: string[];
   disclaimer?: boolean;
+  series?: string;
 }
 
 export type SocialObjects = {

@@ -3,15 +3,16 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
-import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
 import type { Frontmatter } from "src/types";
 import Socials from "@components/Socials.astro";
 
-const posts = await Astro.glob<Frontmatter>("../contents/**/*.md");
+const posts = await Astro.glob<Frontmatter>("../contents/**/*[!series].md");
+const series = await Astro.glob<Frontmatter>("../contents/series/*.series.md");
 
+const filteredSeries = series.filter(({ frontmatter }) => !frontmatter.draft);
 const sortedPosts = getSortedPosts(posts);
 ---
 
@@ -37,7 +38,9 @@ const sortedPosts = getSortedPosts(posts);
       </a>
 
       <p>
-        Welcome on my first try to write about technical stuff! You can expect tutorials and and articles on topics around Go, Typescript, microservice architecture, DevOps, Azure and the rest of the Microsoft products.
+        Welcome on my first try to write about technical stuff! You can expect
+        tutorials and and articles on topics around Go, Typescript, microservice
+        architecture, DevOps, Azure and the rest of the Microsoft products.
       </p>
       <p>
         Read the blog posts or check
@@ -52,6 +55,35 @@ const sortedPosts = getSortedPosts(posts);
         <div class="social-links">Social Links:</div>
         <Socials />
       </div>
+    </section>
+
+    <section id="series" class="pt-12 pb-6">
+      <h2 class="font-semibold text-2xl tracking-wide">Series</h2>
+      {
+        filteredSeries.length > 0 ? (
+          filteredSeries.map(
+            ({ frontmatter }, index) =>
+              index < 3 && (
+                <div
+                  class={`flex py-4 align-middle justify-center rounded bg-repeat grayscale my-6 bg-contain bg-opacity-10 bg-[url('/assets/${frontmatter.ogImage}')]`}
+                >
+                  <a
+                    href={`/series/${slugify(frontmatter)}`}
+                    class="font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block"
+                  >
+                    <h3 class="my-2 p-4 rounded border-skin-accent border">
+                      {frontmatter.title}
+                    </h3>
+                  </a>
+                </div>
+              )
+          )
+        ) : (
+          <div class="flex py-4 align-middle justify-center">
+            No series... yet!
+          </div>
+        )
+      }
     </section>
 
     <section id="recent-posts">
@@ -121,5 +153,9 @@ const sortedPosts = getSortedPosts(posts);
   }
   .all-posts-btn-wrapper {
     @apply text-center my-8;
+  }
+
+  #series div h3 {
+    background-color: black;
   }
 </style>
