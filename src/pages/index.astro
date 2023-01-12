@@ -65,7 +65,7 @@ const sortedPosts = getSortedPosts(posts);
             ({ frontmatter }, index) =>
               index < 3 && (
                 <div
-                  class={`flex py-4 align-middle justify-center rounded bg-repeat grayscale my-6 bg-contain bg-opacity-10 bg-[url('/assets/${frontmatter.ogImage}')]`}
+                  class={`flex py-4 align-middle justify-center rounded bg-repeat grayscale my-6 bg-contain bg-opacity-10 ${frontmatter.ogImage}`}
                 >
                   <a
                     href={`/series/${slugify(frontmatter)}`}
